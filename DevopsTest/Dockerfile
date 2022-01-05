@@ -17,7 +17,7 @@ WORKDIR "/src/DevopsTest"
 RUN dotnet build "DevopsTest.csproj" -c Release -o /app/build --no-restore
 
 FROM build AS publish
-RUN dotnet publish "DevopsTest.csproj" -c Release -o /app/publish --no-build --no-restore
+RUN dotnet publish "DevopsTest.csproj" -c Release -o /app/publish
 
 FROM base AS final
 WORKDIR /app
