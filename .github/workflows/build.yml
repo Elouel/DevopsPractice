@@ -59,7 +59,7 @@ jobs:
           # or you can signup for free at https://snyk.io/login
           SNYK_TOKEN: ${{ secrets.SNYK_TOKEN }}
         with:
-          args: --file=Dockerfile
+          args: --file= ./DevopsTest
           image: elouel/app:latest
           json: true
       - uses: garethr/snyk-to-sarif@master
