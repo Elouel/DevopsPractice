@@ -22,12 +22,6 @@ jobs:
     steps:
       # Checks-out your repository under $GITHUB_WORKSPACE, so your job can access it
       - uses: actions/checkout@v2
-
-      - uses: actions/setup-dotnet@v1
-        with:
-          dotnet-version: '6.0.x'
-          include-prerelease: true
-      - run: dotnet build DevopsTest/DevopsTest.csproj
       
       - name: Initialize CodeQL
         uses: github/codeql-action/init@v1
@@ -37,6 +31,12 @@ jobs:
           # By default, queries listed here will override any specified in a config file.
           # Prefix the list here with "+" to use these queries and those in the config file.
           # queries: ./path/to/local/query, your-org/your-repo/queries@main
+
+      - uses: actions/setup-dotnet@v1
+        with:
+          dotnet-version: '6.0.x'
+          include-prerelease: true
+      - run: dotnet build DevopsTest/DevopsTest.csproj
           
       - name: Perform CodeQL Analysis
         uses: github/codeql-action/analyze@v1
