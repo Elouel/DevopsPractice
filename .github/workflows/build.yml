@@ -67,7 +67,7 @@ jobs:
         shell: pwsh
         run: |
          (Get-Content -Path ${{ github.workspace }}/KubConfig/app.yml) |
-          ForEach-Object {$_ -Replace 'elouel/app:[0-9]*', ${{ github.run_number }} } |
+          ForEach-Object {$_ -Replace 'elouel/app:[0-9]*', 'elouel/app:${{ github.run_number }}' } |
               Set-Content -Path ${{ github.workspace }}/KubConfig/app.yml
               
       - name: Commit files
