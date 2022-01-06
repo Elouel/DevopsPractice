@@ -16,10 +16,6 @@ COPY . .
 WORKDIR "/src/DevopsTest"
 RUN dotnet build "DevopsTest.csproj" -c Release -o /app/build --no-restore
 
-# run tests on docker build
-RUN dotnet test
-
-
 FROM build AS publish
 RUN dotnet publish "DevopsTest.csproj" -c Release -o /app/publish
 
