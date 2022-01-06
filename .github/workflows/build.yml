@@ -72,3 +72,10 @@ jobs:
               
       - name: action-push
         uses: ludeeus/action-push@0.0.1
+          env = {
+            ACTION_MAIL = "action@action.org"
+            ACTION_NAME = "action"
+            ACTION_BRANCH = "master"
+            ACTION_MESSAGE = "Action commit change image version"
+          }
+          secrets = ["GITHUB_TOKEN"]
