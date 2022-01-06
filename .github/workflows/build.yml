@@ -63,7 +63,7 @@ jobs:
       - name: Change kubernetes configs
         shell: pwsh
         run: |
-         (Get-Content -Path ./app.yml) |
+         (Get-Content -Path ./KubConfig/app.yml) |
           ForEach-Object {$_ -Replace 'elouel/app:[0-9]*', ${{ github.run_number }} } |
-              Set-Content -Path ./app.yml
-          Get-Content -Path ./app.yml
+              Set-Content -Path ./KubConfig/app.yml
+          Get-Content -Path ./KubConfig/app.yml
