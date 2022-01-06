@@ -63,4 +63,4 @@ jobs:
       - name: Change kubernetes configs
         shell: pwsh
         run: |
-          .\changeImageVersion.ps1 --image ${{ secrets.DOCKERHUB_USERNAME }}/app:${{ github.run_number }}
+          .\KubConfig\changeImageVersion.ps1 --image ${{ secrets.DOCKERHUB_USERNAME }}/app:${{ github.run_number }}
