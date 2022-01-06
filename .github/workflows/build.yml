@@ -63,4 +63,7 @@ jobs:
       - name: Change kubernetes configs
         shell: pwsh
         run: |
-          .\KubConfig\changeImageVersion.ps1 --image ${{ secrets.DOCKERHUB_USERNAME }}/app:${{ github.run_number }}
+         (Get-Content -Path ./app.yml) |
+          ForEach-Object {$_ -Replace 'elouel/app:[0-9]*', ${{ github.run_number }} } |
+              Set-Content -Path ./app.yml
+          Get-Content -Path ./app.yml
