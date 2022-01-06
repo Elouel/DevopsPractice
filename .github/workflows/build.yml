@@ -1,20 +1,13 @@
-# This is a basic workflow to help you get started with Actions
-
 name: CI
 
-# Controls when the workflow will run
 on:
-  # Triggers the workflow on push or pull request events but only for the main branch
   push:
     branches: [ main ]
     paths:
       - 'App/**'
       - '.github/workflows/**'
 
-  # Allows you to run this workflow manually from the Actions tab
   workflow_dispatch:
-
-# A workflow run is made up of one or more jobs that can run sequentially or in parallel
 jobs:
 
   prebuild:
@@ -22,8 +15,6 @@ jobs:
     steps: 
       - name: Gitleaks
         uses: zricethezav/gitleaks-action@v1
-          
-
     
  # This workflow contains a single job called "build"
   pack:
@@ -64,3 +55,12 @@ jobs:
         with:
           image: ${{ secrets.DOCKERHUB_USERNAME }}/app:latest
 
+
+  deploy:
+    needs: pack
+    runs-on: ubuntu-latest
+    steps:
+      - name: Change kubernetes configs
+        shell: pwsh
+        run: |
+          .\changeImageVersion.ps1 --image ${{ secrets.DOCKERHUB_USERNAME }}/app:${{ github.run_number }
