@@ -23,33 +23,12 @@ jobs:
       - name: Gitleaks
         uses: zricethezav/gitleaks-action@v1
           
-  # This workflow contains a single job called "build"
-  build:
-    needs: prebuild
-    runs-on: ubuntu-latest
 
-    steps:
-      # Checks-out your repository under $GITHUB_WORKSPACE, so your job can access it
-      - uses: actions/checkout@v2
-      
-      - name: Initialize CodeQL
-        uses: github/codeql-action/init@v1
-        with:
-          languages: 'csharp'
-
-      - uses: actions/setup-dotnet@v1
-        with:
-          dotnet-version: '6.0.x'
-          include-prerelease: true
-      - run: dotnet build App/DevopsTest/DevopsTest.csproj /p:UseSharedCompilation=false
-          
-      - name: Perform CodeQL Analysis
-        uses: github/codeql-action/analyze@v1
     
  # This workflow contains a single job called "build"
   pack:
     # The type of runner that the job will run on
-    needs: build
+    # needs: build
     runs-on: ubuntu-latest
     steps:
       - name: Check out repository code
