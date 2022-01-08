@@ -18,4 +18,4 @@ spec:
       - name: app
         image: elouel/app:53
         ports:
-        - containerPort: 80
+        - containerPort: 8080
