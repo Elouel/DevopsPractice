@@ -32,7 +32,6 @@ jobs:
         with:
           dotnet-version: '6.0.x'
           include-prerelease: true
-      - run: dotnet build 
       
       - name: Install dependencies
         run: dotnet restore
@@ -96,9 +95,9 @@ jobs:
       - name: Change kubernetes configs
         shell: pwsh
         run: |
-         (Get-Content -Path ${{ github.workspace }}/KubConfig/base/app.yml) |
+         (Get-Content -Path ${{ github.workspace }}/KubConfig/base/appDeployment.yml) |
           ForEach-Object {$_ -Replace 'elouel/app:[0-9]*', 'elouel/app:${{ github.run_number }}' } |
-              Set-Content -Path ${{ github.workspace }}/KubConfig/base/app.yml
+              Set-Content -Path ${{ github.workspace }}/KubConfig/base/appDeployment.yml
               
       - name: Commit files
         run: |
