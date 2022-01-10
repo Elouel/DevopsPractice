@@ -40,7 +40,7 @@ jobs:
         run: dotnet build App/DevopsTest/DevopsTest.csproj /p:UseSharedCompilation=false --configuration Release --no-restore
       
       - name: Test
-        run: dotnet test App/Test/Tests.csproj --no-restore --no-build --verbosity normal
+        run: dotnet test App/Tests/Tests.csproj --no-restore --no-build --verbosity normal
 
       - name: Perform CodeQL Analysis
         uses: github/codeql-action/analyze@v1
