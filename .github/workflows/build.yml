@@ -34,13 +34,13 @@ jobs:
           include-prerelease: true
       
       - name: Install dependencies
-        run: dotnet restore
+        run: dotnet restore  App/DevopsTest/DevopsTest.csproj
 
       - name: Build
         run: dotnet build App/DevopsTest/DevopsTest.csproj /p:UseSharedCompilation=false --configuration Release --no-restore
       
       - name: Test
-        run: dotnet test --no-restore --no-build --verbosity normal
+        run: dotnet test App/DevopsTest/Tests.csproj --no-restore --no-build --verbosity normal
 
       - name: Perform CodeQL Analysis
         uses: github/codeql-action/analyze@v1
