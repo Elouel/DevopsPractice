@@ -16,6 +16,6 @@ spec:
     spec:
       containers:
       - name: app
-        image: elouel/app:84
+        image: elouel/app:85
         ports:
         - containerPort: 80
