@@ -15,9 +15,9 @@ jobs:
     steps: 
       - name: Check out repository code
         uses: actions/checkout@v2
-        
-      - name: Gitleaks
-        uses: zricethezav/gitleaks-action@v1
+      - name: Gitleaks Scanner
+        uses: DariuszPorowski/github-action-gitleaks@v1
+       
         
   build:
     needs: prebuild
