@@ -62,6 +62,13 @@ jobs:
           dotnet test App/Tests/Tests.csproj --no-restore --no-build --verbosity normal --collect:"XPlat Code Coverage"
           dir
           dotnet-sonarscanner end /d:sonar.login="${{ secrets.SONAR_TOKEN }}"
+          
+      - name: list
+        shell: pwsh
+        run: | 
+          dir
+          
+          
     
  # This workflow contains a single job called "build"
   pack:
