@@ -56,10 +56,11 @@ jobs:
           SONAR_TOKEN: ${{ secrets.SONAR_TOKEN }}
         shell: pwsh
         run: |
-          dotnet-sonarscanner begin /k:"Elouel_DevopsPractice" /o:"elouel" /d:sonar.login="${{ secrets.SONAR_TOKEN }}" /d:sonar.host.url="https://sonarcloud.io" /d:sonar.cs.opencover.reportsPaths="**/coverage.cobertura.xml"
+          dotnet-sonarscanner begin /k:"Elouel_DevopsPractice" /o:"elouel" /d:sonar.login="${{ secrets.SONAR_TOKEN }}" /d:sonar.host.url="https://sonarcloud.io" /d:sonar.cs.opencover.reportsPaths="./TestResults/**/coverage.cobertura.xml"
           dotnet restore App/DevopsTest/DevopsTest.csproj
           dotnet build App/DevopsTest/DevopsTest.csproj --configuration Release --no-restore
           dotnet test App/Tests/Tests.csproj --no-restore --no-build --verbosity normal --collect:"XPlat Code Coverage"
+          dir
           dotnet-sonarscanner end /d:sonar.login="${{ secrets.SONAR_TOKEN }}"
     
  # This workflow contains a single job called "build"
