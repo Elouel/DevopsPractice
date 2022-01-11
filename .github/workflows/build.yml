@@ -61,17 +61,8 @@ jobs:
           dotnet build App/DevopsTest/DevopsTest.csproj --configuration Release --no-restore
           dotnet test App/Tests/Tests.csproj --no-restore --verbosity normal --collect:"XPlat Code Coverage" -- DataCollectionRunSettings.DataCollectors.DataCollector.Configuration.Format=cobertura,opencover
           dotnet-sonarscanner end /d:sonar.login="${{ secrets.SONAR_TOKEN }}"
-          
-      - name: list
-        shell: pwsh
-        run: | 
-          dir
-          
-          
-    
- # This workflow contains a single job called "build"
+         
   pack:
-    # The type of runner that the job will run on
     # needs: build
     runs-on: ubuntu-latest
     steps:
