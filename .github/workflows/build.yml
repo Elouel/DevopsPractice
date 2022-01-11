@@ -1,13 +1,7 @@
 name: CI
 
 on:
-  push:
-    branches: [ main ]
-    paths:
-      - 'App/**'
-      - '.github/workflows/**'
-
-  workflow_dispatch:
+ workflow_dispatch:
 jobs:
 
   prebuild:
