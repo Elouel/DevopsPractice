@@ -22,11 +22,14 @@ Workflow:
  
  
  Future Imrpovements:
-  1. Add Code coverage to the sonarcloud report.
-  2. Create the infra structure as a code with terraform and ansibel
+ 
+  1. CI/Cd changes
+      - Add Code coverage to the sonarcloud report.
+      - Produce the container immage with tag from the sha commit.
+  3. Create the infra structure as a code with terraform and ansibel
       - Terraform to provision the needed infrastructure
       - Ansibel to install needed configurations and kubernetes cluster and installing the argo cd.
-  3. Add Observability. 
+  4. Add Observability. 
       - Configure Prometheus to collect application data and metrics. Cluster metrics.
       - Grafana to visualize the data.
-  4. Secret managment. 
+  5. Secret managment. 
