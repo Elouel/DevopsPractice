@@ -33,3 +33,9 @@ Workflow:
       - Configure Prometheus to collect application data and metrics. Cluster metrics.
       - Grafana to visualize the data.
   5. Secret managment. 
+  6. Argocd support multiple environments
+      - Possible solutions:
+          - Different branches for every environment
+          - Different paths for every environment
+          - Kubernetes template engine (kustomize, Helm)
+      
