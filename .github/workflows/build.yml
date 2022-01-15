@@ -1,7 +1,13 @@
 name: CI
 
 on:
- workflow_dispatch:
+  push:
+    branches: [ main ]
+    paths:
+      - 'App/**'
+      - '.github/workflows/**'
+      
+  workflow_dispatch:
 jobs:
 
   prebuild:
@@ -10,16 +16,8 @@ jobs:
       - name: Check out repository code
         uses: actions/checkout@v2
         
-      - name: Run Gitleaks
-        uses: eeveebank/github-actions-gitleaks@v1.0.0
-        with:
-          depth: 1
-        
-      - name: Push
-        uses: github/codeql-action/upload-sarif@v1
-        with:
-          sarif_file: gitleaks.sarif
-       
+      - name: Gitleaks
+        uses: zricethezav/gitleaks-action@v1       
         
   build:
     needs: prebuild
@@ -38,7 +36,7 @@ jobs:
           java-version: 1.11
       - uses: actions/checkout@v2
         with:
-          fetch-depth: 0  # Shallow clones should be disabled for a better relevancy of analysis
+          fetch-depth: 0
      
       - name: Install SonarCloud scanner
         shell: pwsh
@@ -46,7 +44,7 @@ jobs:
           dotnet tool install --global dotnet-sonarscanner --version 5.4.1
       - name: Build and analyze
         env:
-          GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}  # Needed to get PR information, if any
+          GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
           SONAR_TOKEN: ${{ secrets.SONAR_TOKEN }}
         shell: pwsh
         run: |
@@ -57,7 +55,7 @@ jobs:
           dotnet-sonarscanner end /d:sonar.login="${{ secrets.SONAR_TOKEN }}"
          
   pack:
-    # needs: build
+    needs: build
     runs-on: ubuntu-latest
     steps:
       - name: Check out repository code
@@ -69,9 +67,7 @@ jobs:
       - name: Docker Login
         uses: docker/login-action@v1.12.0
         with:
-          # Username used to log against the Docker registry
           username: ${{ secrets.DOCKERHUB_USERNAME }}
-          # Password or personal access token used to log against the Docker registry
           password: ${{ secrets.DOCKERHUB_TOKEN }}
 
       - name: Build and push
@@ -95,7 +91,7 @@ jobs:
 
 
   deploy:
-    needs: pack
+    needs: scanimage
     runs-on: ubuntu-latest
     steps:
       - name: Check out repository code
@@ -112,7 +108,7 @@ jobs:
         run: |
           git config --local user.email "41898282+github-actions[bot]@users.noreply.github.com"
           git config --local user.name "github-actions[bot]"
-          git commit -m "Add changes" -a
+          git commit -m "Change config with the new version of the app" -a
       - name: Push changes
         uses: ad-m/github-push-action@master
         with:
