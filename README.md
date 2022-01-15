@@ -10,7 +10,8 @@ Workflow:
   1. Pushing changes in the main branch on path: 'App/**' will trigger the CI/CD pipeline.
   2. CI/CD pipeline will perform series of jobs:
      - Scan the commit for commited secrets/ keys etc. (Gitleaks)
-     - Will build the application
+     - Build the application
+        - Style checks.
      - Run unit tests
      - Static code analys with sonarcloud
      - Produce a docker image with the new version of the app
