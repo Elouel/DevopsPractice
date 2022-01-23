@@ -13,17 +13,16 @@ spec:
     metadata:
       labels:
         app: app
-    
     spec:
       containers:
       - name: app
         image: elouel/app:142
+        resources:
+          requests:
+            memory: "64Mi"
+            cpu: "250m"
+          limits:
+            memory: "128Mi"
+            cpu: "500m"
       ports:
       - containerPort: 80
-      resources:
-        requests:
-          memory: "64Mi"
-          cpu: "250m"
-        limits:
-          memory: "128Mi"
-          cpu: "500m"
