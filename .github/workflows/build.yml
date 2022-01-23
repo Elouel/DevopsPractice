@@ -103,9 +103,9 @@ jobs:
       - name: Change kubernetes configs
         shell: pwsh
         run: |
-         (Get-Content -Path ${{ github.workspace }}/KubConfig/base/appDeployment.yml) |
+         (Get-Content -Path ${{ github.workspace }}/KubConfig/Dev/appDeployment.yml) |
           ForEach-Object {$_ -Replace 'elouel/app:[0-9]*', 'elouel/app:${{ github.run_number }}' } |
-              Set-Content -Path ${{ github.workspace }}/KubConfig/base/appDeployment.yml
+              Set-Content -Path ${{ github.workspace }}/KubConfig/Dev/appDeployment.yml
               
       - name: Commit files
         run: |
