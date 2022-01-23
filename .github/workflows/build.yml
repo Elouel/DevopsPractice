@@ -22,6 +22,8 @@ jobs:
         uses: zricethezav/gitleaks-action@master
         with:
           config-path: .github/.gitleaks.toml
+          source: ./
+          log_level: debug
         
   build:
     needs: prebuild
