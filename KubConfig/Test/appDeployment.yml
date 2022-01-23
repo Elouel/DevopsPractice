@@ -5,7 +5,7 @@ metadata:
   labels:
     app: app
 spec:
-  replicas: 2
+  replicas: 1
   selector:
     matchLabels:
       app: app
@@ -17,6 +17,8 @@ spec:
       containers:
       - name: app
         image: elouel/app:138
+      ports:
+      - containerPort: 80
       resources:
       requests:
         memory: "64Mi"
@@ -24,5 +26,3 @@ spec:
       limits:
         memory: "128Mi"
         cpu: "500m"
-      ports:
-      - containerPort: 80
