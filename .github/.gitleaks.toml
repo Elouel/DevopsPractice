@@ -1,7 +1,7 @@
 [[rules]]
 id = "discord-client-secret"
 description = "Discord client secret"
-reger3ferferx = '''(?i)(discord[a-z0-9_ .\-,]{0,25})(=|>|:=|\|\|:|<=|=>|:).{0,5}['\"]([a-z0-9=_\-]{32})['\"]'''
+regex = '''(?i)(discord[a-z0-9_ .\-,]{0,25})(=|>|:=|\|\|:|<=|=>|:).{0,5}['\"]([a-z0-9=_\-]{32})['\"]'''
 secretGroup = 3
 
 [[rules]]
