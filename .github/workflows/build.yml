@@ -17,7 +17,9 @@ jobs:
         uses: actions/checkout@v2
         
       - name: Gitleaks
-        uses: zricethezav/gitleaks-action@master       
+        uses: zricethezav/gitleaks-action@master
+        with:
+          config-path: .gitleaks.toml
         
   build:
     needs: prebuild
