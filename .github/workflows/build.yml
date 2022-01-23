@@ -19,7 +19,7 @@ jobs:
           fetch-depth: '2'
         
       - name: Gitleaks
-        uses: zricethezav/gitleaks-action@v2
+        uses: zricethezav/gitleaks-action@v1
         with:
           config: .github/.gitleaks.toml
           source: ./
