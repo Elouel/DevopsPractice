@@ -26,7 +26,7 @@ Workflow:
   1. CI/CD changes:
       - Add code coverage to the SonarCloud report
       - Add tag to the built Docker image from the commit SHA
-  2. Create the infrastructure as a code with Terraform and Ansible  
+  2. Create the infrastructure as a code with Terraform
   3. Add observability 
       - Configure Prometheus to collect application data and metrics
       - Grafana to visualize the data
