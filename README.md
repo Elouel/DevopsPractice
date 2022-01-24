@@ -20,7 +20,8 @@ Workflow:
      - Scan the newly created image for vulnerabilities via Snuk
      - Change the Kubernetes configuration files and commit them back in the repo on path: KubConfig/base
   3. ArgoCD checks repo for changes in the Kubernetes configuration files and applies these in the Kubernetes cluster if such found 
- 
+ API Documentation:
+    http://{cluseterIp}/swagger/index.html
  Future Improvements:
  
   1. CI/CD changes:
