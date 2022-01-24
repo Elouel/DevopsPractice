@@ -18,7 +18,7 @@ Workflow:
      - Build a Docker image with the new version of the app
      - Push the image in a container repository (currently Docker Hub)
      - Scan the newly created image for vulnerabilities via Snuk
-     - Change the Kubernetes configuration files and commit them back in the repo on path: KubConfig/base
+     - Change the Kubernetes configuration files and commit them back in the repo on path: KubConfig/Dev
   3. ArgoCD checks repo for changes in the Kubernetes configuration files and applies these in the Kubernetes cluster if such found 
  API Documentation:
     http://{cluseterIp}/swagger/index.html
