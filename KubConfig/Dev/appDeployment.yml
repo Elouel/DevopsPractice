@@ -16,7 +16,7 @@ spec:
     spec:
       containers:
       - name: app
-        image: elouel/app:148
+        image: elouel/app:149
         resources:
           requests:
             memory: "64Mi"
