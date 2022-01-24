@@ -1,8 +1,6 @@
 
 ![alt text](https://github.com/Elouel/DevopsPractice/blob/main/devops%20.png)
 
-Goals:
-- optimize code quality and time to market
 
 Prerequisites: 
   1. Manualy set up Kubernetes cluster (https://minikube.sigs.k8s.io/docs/start)
