@@ -5,8 +5,8 @@ Goals:
 - optimize code quality and time to market
 
 Prerequisites: 
-  1. Manualy set up Kubernetes cluster
-  2. Install in the cluster ArgoCD
+  1. Manualy set up Kubernetes cluster (https://minikube.sigs.k8s.io/docs/start)
+  2. Install in the cluster ArgoCD (https://argo-cd.readthedocs.io/en/stable/getting_started/)
   3. Configure new ArgoCD app
 
 Workflow:
